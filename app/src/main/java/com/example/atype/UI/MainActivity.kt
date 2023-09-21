@@ -1,19 +1,22 @@
-package com.example.atype
+package com.example.atype.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.example.atype.R
+import com.example.atype.data.api.ImageSearchResponse
+import com.example.atype.data.api.SearchModel
 import com.example.atype.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
+    var likedItems:ArrayList<SearchModel> = ArrayList()
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-
     override fun onCreate(savedInstanceState: Bundle?)= with(binding) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         navigationItemSelect()
     }
 
@@ -36,6 +39,14 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.main_frame, fragment)
         fragmentTransaction.commit()
 
+    }
+    fun addLikedItem(item: SearchModel){
+        if (!likedItems.contains(item)){
+            likedItems.add(item)
+        }
+    }
+    fun removeLikedItem(item: SearchModel){
+        likedItems.remove(item)
     }
 
 }

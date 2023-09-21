@@ -2,19 +2,19 @@ package com.example.atype.data.api
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
 
-
 interface KakaoAPI {
-    @Headers("Authorization: KakaoAK REST_API_KEY}")
     @GET("v2/search/image")
    fun getSearchImage(
+        @Header("Authorization") apiKey: String,
         @Query("query") query: String,
         @Query("sort") sort: String ,
         @Query("page") page: Int = 1,
-        @Query("size") size: Int =80,
+        @Query("size") size: Int =30,
     ): Call<ImageSearchResponse?>?
 }
 //Authorization	Authorization: KakaoAK ${REST_API_KEY}

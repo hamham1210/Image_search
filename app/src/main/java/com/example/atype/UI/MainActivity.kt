@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-            selectedItemId = R.id.main_nav
+            selectedItemId = R.id.home_recycler_view
         }
 
     }
@@ -48,5 +48,6 @@ class MainActivity : AppCompatActivity() {
     fun removeLikedItem(item: SearchModel){
         likedItems.remove(item)
     }
+
 
 }

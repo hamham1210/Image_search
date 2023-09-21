@@ -1,7 +1,7 @@
 package com.example.atype.recyclerview
 
 import android.content.Context
-import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.atype.data.api.Content.DateFormat
-import com.example.atype.data.api.KakaoImage
-import com.example.atype.databinding.NewsBinding
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.executor.GlideExecutor.UncaughtThrowableStrategy.LOG
+import com.example.atype.R
 import com.example.atype.UI.MainActivity
+import com.example.atype.data.api.Content.DateFormat
 import com.example.atype.data.api.SearchModel
+import com.example.atype.databinding.NewsBinding
+
 
 class HomeAdapter (private val mitem: Context) : RecyclerView.Adapter<HomeAdapter.HomeHolder>() {
 
@@ -41,6 +41,7 @@ class HomeAdapter (private val mitem: Context) : RecyclerView.Adapter<HomeAdapte
         holder.news_timeline.text = DateFormat(
             currentItem.dateTime,"YYYY-MM-DD'T'hh:mm:ss.SSS+09:00","yyyy-mm-dd HH:mm:ss"
         )
+
     }
 
     override fun getItemCount() = items.size
@@ -55,8 +56,7 @@ class HomeAdapter (private val mitem: Context) : RecyclerView.Adapter<HomeAdapte
         var cons: ConstraintLayout = binding.cons1
 
         init {
-            cons.setOnClickListener(this)
-            img_news.setOnClickListener(this)
+            heart.setOnClickListener(this)
         }
 
         override fun onClick(view: View?) {
@@ -65,11 +65,12 @@ class HomeAdapter (private val mitem: Context) : RecyclerView.Adapter<HomeAdapte
             item.islike = !item.islike
             if (item.islike){
                 (mitem as MainActivity).addLikedItem(item)
+                heart.setBackgroundResource(R.drawable.icon_heart_full)
             }else{
                 (mitem as MainActivity).removeLikedItem(item)
+                heart.setBackgroundResource(R.drawable.icon_heart)
             }
             notifyItemChanged(position)
-
         }
     }
 }

@@ -1,13 +1,11 @@
 package com.example.atype.recyclerview
 
 import android.content.Context
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.atype.R
@@ -53,7 +51,6 @@ class HomeAdapter (private val mitem: Context) : RecyclerView.Adapter<HomeAdapte
         var news_title: TextView = binding.newsTxt
         var news_timeline: TextView = binding.timelineTxt
         var heart: ImageView = binding.imgHeart
-        var cons: ConstraintLayout = binding.cons1
 
         init {
             heart.setOnClickListener(this)

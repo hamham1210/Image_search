@@ -33,7 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_search_bar"
-        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/news" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

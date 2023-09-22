@@ -54,7 +54,7 @@ class SearchAdapter(var mContext: Context) : RecyclerView.Adapter<RecyclerView.V
                 if (position != RecyclerView.NO_POSITION) {
                     items.removeAt(position)
                     notifyItemRemoved(position)
-                    heart.setBackgroundResource(R.drawable.icon_heart)
+                    heart.setBackgroundResource(R.drawable.icon_heart_full)
                 }
             }
 

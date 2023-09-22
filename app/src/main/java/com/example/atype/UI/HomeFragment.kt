@@ -22,6 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.collections.ArrayList
+import androidx.appcompat.widget.SearchView
 
 
 class HomeFragment : Fragment() {
@@ -35,7 +36,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         SetupView()
         setupListeners()
@@ -47,10 +47,9 @@ class HomeFragment : Fragment() {
         adapter = HomeAdapter(requireContext())
         binding.homeRecyclerView.adapter = adapter
         binding.homeRecyclerView.itemAnimator = null
-
         val lastSearch = Content.saveLastSearch(requireContext(), "defaultQuery")
         val editableText = Editable.Factory.getInstance().newEditable(lastSearch.toString())
-        binding.mainSearchBar.text = editableText
+        binding.mainSearchBar.text =editableText
     }
     private fun setupListeners(){
         binding.mainBtn.setOnClickListener{
@@ -74,7 +73,6 @@ private fun fetchImageResults(query: String){
             response: Response<ImageSearchResponse?>
         ) {
             val body = response.body()
-            Log.d("resItems","$resItems")
            body?.metaData?.let { metaData ->
                 if (metaData?.totalCount ?: 0 > 0){
                     body!!.documents?.forEach { document ->
@@ -85,7 +83,6 @@ private fun fetchImageResults(query: String){
                     }
                 }
             }
-            Log.d("resItems","$resItems")
             adapter.items =  resItems
             adapter.notifyDataSetChanged()
         }

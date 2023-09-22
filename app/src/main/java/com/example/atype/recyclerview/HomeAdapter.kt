@@ -28,7 +28,7 @@ class HomeAdapter (private val mitem: Context) : RecyclerView.Adapter<HomeAdapte
         val binding =
             NewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomeHolder(binding)
-    }// ViewHolder의 값들을 모두 가져와서 view에 연결시켜준다. 2번
+    }
 
     override fun onBindViewHolder(holder: HomeHolder, position: Int) {
         val currentItem = items[position]

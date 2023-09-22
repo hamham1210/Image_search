@@ -32,13 +32,14 @@ class MainActivity : AppCompatActivity() {
             }
             selectedItemId = R.id.home_recycler_view
         }
-
+        replaceFragment(fragment = HomeFragment())
     }
+
+
     private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main_frame, fragment)
         fragmentTransaction.commit()
-
     }
     fun addLikedItem(item: SearchModel){
         if (!likedItems.contains(item)){

@@ -30,7 +30,7 @@ object Content {
         val prefs =   context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit().putString(PREF_KEY, query).apply()
     }
-    fun getLastSearch (context: Context): String?{
+    fun getLastcSearch (context: Context): String?{
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         return prefs.getString(PREF_KEY, null)
     }
